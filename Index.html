@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Is Fair in Love and War</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --paper: #f5f0e8;
+    --warm: #c9a87c;
+    --faint: #e8e0d0;
+    --muted: #7a6e62;
+  }
+
+- {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+html {
+background: var(–ink);
+}
+
+body {
+background: var(–paper);
+color: var(–ink);
+font-family: ‘Libre Baskerville’, Georgia, serif;
+min-height: 100vh;
+position: relative;
+overflow-x: hidden;
+}
+
+/* Grain overlay */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 100;
+opacity: 0.4;
+}
+
+.page {
+max-width: 680px;
+margin: 0 auto;
+padding: 100px 40px 140px;
+}
+
+/* Header */
+.header {
+margin-bottom: 80px;
+opacity: 0;
+animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.eyebrow {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 11px;
+font-weight: 400;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 28px;
+}
+
+h1 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(42px, 8vw, 72px);
+font-weight: 300;
+line-height: 1.05;
+letter-spacing: -0.02em;
+color: var(–ink);
+margin-bottom: 40px;
+}
+
+h1 em {
+font-style: italic;
+color: var(–warm);
+}
+
+.rule {
+width: 48px;
+height: 1px;
+background: var(–warm);
+}
+
+/* Body text */
+.body {
+opacity: 0;
+animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+p {
+font-size: 17px;
+line-height: 1.85;
+color: var(–ink);
+margin-bottom: 32px;
+font-weight: 400;
+}
+
+p:last-child {
+margin-bottom: 0;
+}
+
+/* Section breaks */
+.section-break {
+margin: 56px 0;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.section-break::before,
+.section-break::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: var(–faint);
+}
+
+.section-break span {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 18px;
+color: var(–warm);
+font-style: italic;
+}
+
+/* Pull quotes */
+.pull {
+margin: 56px -24px;
+padding: 40px 48px;
+border-left: 2px solid var(–warm);
+background: rgba(201, 168, 124, 0.06);
+}
+
+.pull p {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(22px, 3.5vw, 28px);
+font-weight: 300;
+font-style: italic;
+line-height: 1.5;
+color: var(–ink);
+margin: 0;
+}
+
+/* Final line */
+.final {
+margin-top: 64px;
+padding-top: 48px;
+border-top: 1px solid var(–faint);
+}
+
+.final p {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(20px, 3vw, 26px);
+font-style: italic;
+font-weight: 300;
+color: var(–muted);
+line-height: 1.6;
+}
+
+.final p strong {
+font-style: normal;
+font-weight: 500;
+color: var(–ink);
+font-size: clamp(22px, 3.5vw, 30px);
+display: block;
+margin-top: 16px;
+}
+
+/* Footer */
+.footer {
+margin-top: 100px;
+padding-top: 32px;
+border-top: 1px solid var(–faint);
+display: flex;
+justify-content: space-between;
+align-items: center;
+opacity: 0;
+animation: rise 1s ease 0.8s forwards;
+}
+
+.byline {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 13px;
+letter-spacing: 0.12em;
+color: var(–muted);
+text-transform: uppercase;
+}
+
+.date {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 13px;
+color: var(–muted);
+font-style: italic;
+}
+
+@keyframes rise {
+from {
+opacity: 0;
+transform: translateY(24px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@media (max-width: 600px) {
+.page {
+padding: 64px 24px 100px;
+}
+.pull {
+margin: 40px 0;
+padding: 28px 28px;
+}
+}
+</style>
+
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <p class="eyebrow">Essay &nbsp;·&nbsp; 2026</p>
+    <h1>All Is Fair in<br><em>Love and War</em></h1>
+    <div class="rule"></div>
+  </header>
+
+  <div class="body">
+
+```
+<p>I believe this. Not because it's convenient and not because I need the cover. I believe it the way you believe things you didn't choose to believe. They just settled in you somewhere along the way and no argument has been interesting enough to move them since.</p>
+
+<p>I know how it sounds. It sounds like something a person says right before they do something they've already decided to do. Maybe. But I think most moral positions work that way if you're honest enough to trace them back far enough. We feel first. We explain after. The only question is whether you're willing to admit which came first.</p>
+
+<div class="section-break"><span>✦</span></div>
+
+<p>Cathy knew. She stood in her own kitchen and told Nelly, thinking no one else was listening, that her love for Linton was like foliage, seasonal, that it would change the way winter changes trees. And Heathcliff was the rocks underneath. Necessary. Not always a pleasure, but her own being. She said it out loud and then she married Edgar anyway. And then she spent the rest of her short life breaking herself against that choice until she died at nineteen with her daughter barely born and Heathcliff out in the courtyard not allowed in.</p>
+
+<p>If she had just said forget it, if she had just chosen the thing she actually was, the story ends completely differently. Maybe badly still. But differently. At least she would have been in the right life.</p>
+
+<div class="pull">
+  <p>She chose the safe version and it destroyed everything anyway. Which is the part nobody mentions when they talk about being careful.</p>
+</div>
+
+<p>Nietzsche said the most courageous thing a person can do is think their own thoughts without needing the group's permission to have them. The herd morality, as he called it, was built by the many to restrain the few. Not because it was true but because it was useful for the people who benefited from everyone staying in line. And I think about that whenever someone invokes fairness as a reason not to want something. Whose fairness. Built by whom. For whose benefit.</p>
+
+<p>Morality is infrastructure. It keeps enough people moving in the same direction without too much collision. It was never written with your specific life in mind. It has never met the particular person who walked into your world and rearranged something in you that you didn't know could move. The system keeps running regardless. It asks you to be reasonable about something that reason was never built to handle.</p>
+
+<p>So why should you.</p>
+
+<div class="section-break"><span>✦</span></div>
+
+<p>There's always someone who got there first. A friend who liked him before you did. A people who lived somewhere before you claimed it yours. A seat at a table that someone else warmed. And we're supposed to stand at the edge of what we want and weigh that person's feelings against our own as if the scale is neutral. But who made the scale. And why is their version of fair the one we're all supposed to use.</p>
+
+<p>I am Palestinian. I say that not as an introduction but as evidence. My people lost a country. Not in a war we didn't know was happening, not in some ancient history too far back to touch. We lost it in real time, in documented time, in the time of people still alive who remember the specific trees in their specific gardens. And we lost it, in some part, because we believed that the world would see what was right and act on it. That the truth of the thing would be enough. That moral clarity was a strategy.</p>
+
+<div class="pull">
+  <p>It wasn't.</p>
+</div>
+
+<p>The people who took it understood something we refused to. That in the moments that actually matter, the ones where land and survival and the whole shape of a future are on the table, the rules are not being enforced by anyone. There is no referee. There is only who wanted it enough to do what wanting actually requires. We preached. They moved. And I grew up in the diaspora, between countries that were never quite mine, granddaughter of a man who wrote about a Palestine he never stopped belonging to even after it stopped belonging to him. I inherited his words and his longing and the particular grief of people who were too dignified to be ruthless at the moment it counted.</p>
+
+<p>I am not saying this to celebrate ruthlessness. I am saying it because it is true and because I am tired of the version of this story that makes our loss into a kind of nobility. It was not noble. It was a catastrophe. And catastrophes deserve honest accounting.</p>
+
+<div class="section-break"><span>✦</span></div>
+
+<p>A friend to all is a friend to none. Love that refuses to place anyone at the center isn't love, it's just a pleasant generalized warmth with nowhere to land. Real love has an address. It looked at the whole room and it went there, to that one, and what happened in the rest of the room after that was never the point.</p>
+
+<p>People say you lose it the way you got it. They usually say it when they're the one who lost. Maybe it's true sometimes. But Cathy didn't get her love any particular way. It just was, from childhood, like weather. And she lost it anyway. She lost it by trying to be careful. So the theory has limits.</p>
+
+<p>And even if it holds, even if the whole thing eventually comes apart the same way it came together, at least you were in it. At least you're not living in the quiet of a choice you were too sensible to make, wondering what was on the other side. Heathcliff waited. He came back. He stood in the same house as the life that should have been his and said: you have killed yourself, you did this, what right did you have to leave me. He was not wrong. She had no right. She left anyway and called it the right thing and the right thing ended with her dead at nineteen and him haunted for the rest of his life and nobody, not one person in that book, better off for the sacrifice.</p>
+
+<p>The people who get what they want are not usually the ones who stopped to audit whether they deserved it first. That's not a celebration of ruthlessness. It's just what wanting something enough actually looks like from the outside. You win some, you lose some. That's not cynicism. That's the most honest description I know of what it means to be alive and still reaching for things.</p>
+
+<div class="section-break"><span>✦</span></div>
+
+<p>I might think differently about this someday. The stage rotates and most of us end up on a side of things we didn't expect. But right now, today, this is what I believe. Not because it's easy. Because when I look at the people who loved something enough to go after it without making it smaller first, I don't see monsters. I see people who took the one life they had seriously.</p>
+
+<p>And I see Cathy, on the moors at the end, finally free of all of it, buried not with the Lintons but in the corner of a kirkyard in the middle of the place she should have never left. Too late to mean anything. But at least the right place.</p>
+
+<div class="final">
+  <p>We never made it back to ours.<strong>All is fair in love and war.</strong></p>
+</div>
+```
+
+  </div>
+
+  <footer class="footer">
+    <span class="byline">Amel Tamim</span>
+    <span class="date">2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
